@@ -1,238 +1,259 @@
-<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#F2F5F1">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="CSIT884">
 <title>CSIT884 複習卡</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap">
 <style>
   :root{
-    --paper:#F2F5F1;
-    --card:#FFFFFF;
-    --ink:#1D2420;
-    --ink-soft:#586258;
-    --ink-faint:#8A938B;
-    --line:#DCE3D9;
-    --accent:#C8891F;
-    --accent-ink:#3E2A05;
-    --accent-soft:#F5E3C2;
-    --code:#0E7C74;
-    --code-soft:#DCF0EC;
-    --danger:#B8483C;
-    --danger-soft:#F6DEDA;
-    --success:#3D7A47;
-    --success-soft:#DCEEDD;
-    --shadow: 0 1px 2px rgba(20,30,20,.06), 0 6px 16px rgba(20,30,20,.06);
+    color-scheme:light dark;
+    --paper:#F2F5F1; --card:#FFFFFF; --ink:#1D2420; --ink-soft:#586258; --ink-faint:#7A847B;
+    --line:#DCE3D9; --accent:#C8891F; --accent-ink:#3E2A05; --accent-soft:#F5E3C2;
+    --code:#0E7C74; --code-soft:#DCF0EC; --danger:#B8483C; --danger-soft:#F6DEDA;
+    --success:#3D7A47; --success-soft:#DCEEDD;
+    --shadow:0 1px 2px rgba(20,30,20,.06), 0 6px 16px rgba(20,30,20,.06);
   }
   @media (prefers-color-scheme: dark){
-    :root:not([data-theme="light"]){
-      --paper:#131714;
-      --card:#1B211D;
-      --ink:#E9EEE7;
-      --ink-soft:#A6B2A5;
-      --ink-faint:#6C766B;
-      --line:#2B332C;
-      --accent:#E3A93F;
-      --accent-ink:#1E1400;
-      --accent-soft:#3A2C0F;
-      --code:#54D2C4;
-      --code-soft:#123330;
-      --danger:#E2837A;
-      --danger-soft:#3B211E;
-      --success:#7FC98C;
-      --success-soft:#1E3220;
-      --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 20px rgba(0,0,0,.35);
+    :root{
+      --paper:#131714; --card:#1B211D; --ink:#E9EEE7; --ink-soft:#A6B2A5; --ink-faint:#8A958A;
+      --line:#2B332C; --accent:#E3A93F; --accent-ink:#1E1400; --accent-soft:#3A2C0F;
+      --code:#54D2C4; --code-soft:#123330; --danger:#E2837A; --danger-soft:#3B211E;
+      --success:#7FC98C; --success-soft:#1E3220;
+      --shadow:0 1px 2px rgba(0,0,0,.3), 0 8px 20px rgba(0,0,0,.35);
     }
   }
-  :root[data-theme="dark"]{
-    --paper:#131714;
-    --card:#1B211D;
-    --ink:#E9EEE7;
-    --ink-soft:#A6B2A5;
-    --ink-faint:#6C766B;
-    --line:#2B332C;
-    --accent:#E3A93F;
-    --accent-ink:#1E1400;
-    --accent-soft:#3A2C0F;
-    --code:#54D2C4;
-    --code-soft:#123330;
-    --danger:#E2837A;
-    --danger-soft:#3B211E;
-    --success:#7FC98C;
-    --success-soft:#1E3220;
-    --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 20px rgba(0,0,0,.35);
-  }
-
   *{box-sizing:border-box}
+  [hidden]{display:none!important}
+  html{-webkit-text-size-adjust:100%}
   body{
-    background:var(--paper);
-    color:var(--ink);
-    font-family:"IBM Plex Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-    padding-inline:16px;
-    padding-block:14px 96px;
-    max-width:640px;
-    margin-inline:auto;
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:"IBM Plex Sans",-apple-system,BlinkMacSystemFont,"PingFang TC","Noto Sans TC","Microsoft JhengHei",sans-serif;
+    font-size:14px; line-height:1.5;
+    padding-inline:16px; padding-block:0 110px; max-width:720px; margin-inline:auto;
   }
   h1,h2,h3{font-family:"IBM Plex Mono","SFMono-Regular",Consolas,monospace; text-wrap:balance; margin:0}
-  code, .mono{font-family:"IBM Plex Mono","SFMono-Regular",Consolas,monospace}
   p{margin:0}
+  pre,code,.mono{font-family:"IBM Plex Mono","SFMono-Regular",Consolas,"PingFang TC",monospace}
+  button{font-family:inherit; color:inherit}
 
+  /* ---------- header ---------- */
   header.top{
-    position:sticky; top:env(safe-area-inset-top,0px);
-    z-index:20; background:var(--paper);
-    padding-block:10px 8px; margin-inline:-16px; padding-inline:16px;
+    position:sticky; top:0; z-index:20; background:var(--paper);
+    margin-inline:-16px; padding:calc(10px + env(safe-area-inset-top,0px)) 16px 8px;
     border-bottom:1px solid var(--line);
   }
-  .brand{display:flex; align-items:baseline; gap:8px; margin-bottom:10px}
-  .brand h1{font-size:17px; color:var(--ink)}
-  .brand .tag{font-size:11px; color:var(--ink-faint); font-family:"IBM Plex Sans"}
+  .brand{display:flex; align-items:center; gap:8px; margin-bottom:8px}
+  .brand h1{font-size:16px; white-space:nowrap}
+  .brand .tag{font-size:11px; color:var(--ink-faint); flex:1; min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
+  .mini{
+    font-family:"IBM Plex Mono",monospace; font-size:11px; font-weight:600; white-space:nowrap;
+    padding:6px 10px; border-radius:999px; border:1px solid var(--line); background:var(--card); color:var(--ink-soft); cursor:pointer;
+  }
+  .mini[aria-pressed="true"]{background:var(--code); border-color:var(--code); color:#fff}
   .tabs{display:flex; gap:6px; overflow-x:auto; scrollbar-width:none; padding-bottom:2px}
   .tabs::-webkit-scrollbar{display:none}
+  .tabs.sub{margin-top:6px}
   .tab{
-    flex:0 0 auto; font-family:"IBM Plex Mono"; font-size:12px; font-weight:600;
+    flex:0 0 auto; font-family:"IBM Plex Mono",monospace; font-size:12px; font-weight:600;
     padding:7px 12px; border-radius:999px; border:1px solid var(--line);
     background:var(--card); color:var(--ink-soft); cursor:pointer; white-space:nowrap;
   }
   .tab[aria-selected="true"]{background:var(--accent); border-color:var(--accent); color:var(--accent-ink)}
-  .tab:focus-visible{outline:2px solid var(--code); outline-offset:2px}
+  .tabs.sub .tab{font-size:11.5px; padding:5px 11px; background:transparent}
+  .tabs.sub .tab[aria-selected="true"]{background:var(--code); border-color:var(--code); color:#fff}
+  .tab:focus-visible,.mini:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(--code); outline-offset:2px}
 
-  main{padding-top:16px; display:flex; flex-direction:column; gap:22px}
-
+  main{padding-top:16px; display:flex; flex-direction:column; gap:24px}
   .intro{
     background:var(--card); border:1px solid var(--line); border-radius:14px;
-    padding:14px 16px; box-shadow:var(--shadow); font-size:14px; line-height:1.65; color:var(--ink-soft);
+    padding:14px 16px; box-shadow:var(--shadow); font-size:14px; line-height:1.7; color:var(--ink-soft);
   }
   .intro b{color:var(--ink)}
+  .jump{display:flex; gap:6px; flex-wrap:wrap; margin-top:10px}
+  .jump a{
+    font-family:"IBM Plex Mono",monospace; font-size:11px; padding:4px 9px; border-radius:999px;
+    background:var(--paper); border:1px solid var(--line); color:var(--ink-soft); text-decoration:none;
+  }
 
-  section.block{display:flex; flex-direction:column; gap:10px}
+  section.block{display:flex; flex-direction:column; gap:10px; scroll-margin-top:110px}
   .block-label{
-    display:flex; align-items:center; gap:8px; font-family:"IBM Plex Mono"; font-size:11px;
-    letter-spacing:.06em; color:var(--ink-faint); text-transform:uppercase;
+    display:flex; align-items:center; gap:8px; font-family:"IBM Plex Mono",monospace; font-size:11px;
+    letter-spacing:.05em; color:var(--ink-faint); text-transform:uppercase;
   }
-  .block-label .count{
-    background:var(--line); color:var(--ink-soft); border-radius:999px; padding:1px 8px; font-size:10px;
-  }
+  .block-label .count{background:var(--line); color:var(--ink-soft); border-radius:999px; padding:1px 8px; font-size:10px}
+  .recall-hint{font-size:12px; color:var(--code); background:var(--code-soft); border-radius:8px; padding:6px 10px}
+  body:not(.recall) .recall-hint{display:none}
 
-  /* flashcards */
-  .card-row{display:flex; gap:10px; overflow-x:auto; padding:4px 2px 10px; scroll-snap-type:x proximity}
-  .flip{
-    flex:0 0 auto; width:230px; height:150px; perspective:1000px; scroll-snap-align:start;
+  /* ---------- cheat sheet ---------- */
+  .cheat,.cloze,.trace,.build,.mistake,.quiz{
+    background:var(--card); border:1px solid var(--line); border-radius:14px; box-shadow:var(--shadow); overflow:hidden;
   }
-  .flip-inner{
-    position:relative; width:100%; height:100%; transition:transform .5s cubic-bezier(.4,.2,.2,1);
-    transform-style:preserve-3d; cursor:pointer;
+  .ct{
+    padding:9px 14px; font-family:"IBM Plex Mono",monospace; font-size:12px; font-weight:600;
+    background:var(--accent-soft); color:var(--ink);
   }
+  .cheat pre,.trace pre,.build pre,.cloze pre{
+    margin:0; padding:12px 14px; font-size:12px; line-height:1.65; overflow-x:auto; white-space:pre; color:var(--ink);
+    -webkit-overflow-scrolling:touch; tab-size:2;
+  }
+  .cn{padding:9px 14px; font-size:12.5px; line-height:1.65; color:var(--ink-soft); border-top:1px dashed var(--line)}
+  .recall .cheat pre:not(.shown){filter:blur(7px); cursor:pointer; user-select:none; -webkit-user-select:none}
+
+  /* ---------- flip cards ---------- */
+  .card-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(270px,1fr)); gap:10px}
+  .flip{perspective:1000px; cursor:pointer}
+  .flip-inner{display:grid; transition:transform .45s cubic-bezier(.4,.2,.2,1); transform-style:preserve-3d}
   .flip.flipped .flip-inner{transform:rotateY(180deg)}
   .face{
-    position:absolute; inset:0; backface-visibility:hidden; border-radius:14px;
+    grid-area:1/1; backface-visibility:hidden; -webkit-backface-visibility:hidden; border-radius:14px;
     border:1px solid var(--line); background:var(--card); box-shadow:var(--shadow);
-    padding:14px; display:flex; flex-direction:column; justify-content:center; gap:6px;
+    padding:14px; display:flex; flex-direction:column; gap:8px; min-height:118px;
   }
-  .face.front .q{font-size:14px; font-weight:600; line-height:1.45}
-  .face.front .hint{margin-top:auto; font-size:10px; color:var(--ink-faint); font-family:"IBM Plex Mono"}
-  .face.back{
-    transform:rotateY(180deg); background:var(--code-soft); border-color:var(--code);
-  }
-  .face.back .a{font-family:"IBM Plex Mono"; font-size:12.5px; line-height:1.55; white-space:pre-wrap; color:var(--ink); overflow-y:auto}
+  .face.front .q{font-size:14px; font-weight:600; line-height:1.55; white-space:pre-wrap}
+  .face.front .hint{margin-top:auto; font-size:10px; color:var(--ink-faint); font-family:"IBM Plex Mono",monospace}
+  .face.back{transform:rotateY(180deg); background:var(--code-soft); border-color:var(--code)}
+  .face.back .a{font-family:"IBM Plex Mono",monospace; font-size:12px; line-height:1.6; white-space:pre-wrap; color:var(--ink); overflow-wrap:anywhere}
 
-  /* mistake card */
-  .mistake{
-    background:var(--card); border:1px solid var(--line); border-radius:14px; box-shadow:var(--shadow);
-    overflow:hidden;
+  /* ---------- cloze ---------- */
+  .cloze pre{white-space:pre-wrap; font-size:13px; line-height:2}
+  .blank{
+    font-family:"IBM Plex Mono",monospace; font-size:16px; padding:0 4px; margin:0 1px; height:1.7em;
+    border:1px solid var(--line); border-bottom:2px solid var(--accent); border-radius:5px;
+    background:var(--paper); color:var(--ink); text-align:center; min-width:3.2ch;
   }
+  .blank.ok{border-color:var(--success); background:var(--success-soft)}
+  .blank.bad{border-color:var(--danger); background:var(--danger-soft)}
+  .blank.shown{border-color:var(--code); background:var(--code-soft)}
+  .bar{display:flex; align-items:center; gap:8px; padding:9px 14px; border-top:1px dashed var(--line); flex-wrap:wrap}
+  .btn{
+    font-family:"IBM Plex Mono",monospace; font-size:11.5px; font-weight:600; padding:7px 12px; border-radius:9px;
+    border:1px solid var(--line); background:var(--paper); color:var(--ink-soft); cursor:pointer;
+  }
+  .btn.primary{background:var(--accent); border-color:var(--accent); color:var(--accent-ink)}
+  .bar .res{font-family:"IBM Plex Mono",monospace; font-size:12px; color:var(--ink-soft)}
+  .bar .res.good{color:var(--success)}
+
+  /* ---------- mistakes ---------- */
   .mistake .row{padding:12px 14px; display:flex; gap:10px; align-items:flex-start}
   .mistake .row.wrong{background:var(--danger-soft)}
   .mistake .row.right{background:var(--success-soft)}
-  .mistake .mark{font-family:"IBM Plex Mono"; font-weight:700; font-size:12px; flex:0 0 auto; margin-top:1px}
+  .mistake .mark{font-family:"IBM Plex Mono",monospace; font-weight:700; font-size:12px; flex:0 0 auto; margin-top:1px}
   .mistake .row.wrong .mark{color:var(--danger)}
   .mistake .row.right .mark{color:var(--success)}
-  .mistake pre{font-family:"IBM Plex Mono"; font-size:12px; line-height:1.55; white-space:pre-wrap; word-break:break-word; margin:0}
-  .mistake .note{padding:11px 14px; font-size:12.5px; line-height:1.6; color:var(--ink-soft); border-top:1px dashed var(--line)}
+  .mistake pre{font-size:12px; line-height:1.6; white-space:pre-wrap; word-break:break-word; margin:0; min-width:0}
 
-  /* quiz */
-  .quiz{background:var(--card); border:1px solid var(--line); border-radius:14px; box-shadow:var(--shadow); padding:14px; display:flex; flex-direction:column; gap:12px}
+  /* ---------- trace / build ---------- */
+  .trace pre,.build .task{border-bottom:1px solid var(--line)}
+  .tq{padding:10px 14px 4px; font-size:13.5px; font-weight:600; line-height:1.6; white-space:pre-wrap}
+  .build .task{padding:12px 14px; font-size:13.5px; font-weight:600; line-height:1.65; white-space:pre-wrap; background:var(--paper)}
+  .ans{padding:4px 14px 12px; font-size:13px; line-height:1.7; color:var(--ink)}
+  .ans .a{font-family:"IBM Plex Mono",monospace; font-size:12.5px; white-space:pre-wrap; background:var(--code-soft); border-radius:8px; padding:8px 10px; margin-bottom:6px}
+  .ans .why{color:var(--ink-soft); font-size:12.5px; white-space:pre-wrap}
+  .ans ol{margin:6px 0 8px; padding-left:20px; color:var(--ink)}
+  .ans li{margin:2px 0}
+  .trace .bar,.build .bar{border-top:none; padding-top:4px}
+  .ans pre{margin:0; padding:10px 12px; background:var(--code-soft); border-radius:8px; font-size:12px}
+
+  /* ---------- quiz (topic page) ---------- */
+  .quiz{padding:14px; display:flex; flex-direction:column; gap:16px}
   .quiz-q{display:flex; flex-direction:column; gap:8px}
-  .quiz-q .qtext{font-size:13.5px; font-weight:600; line-height:1.5}
+  .qtext{font-size:13.5px; font-weight:600; line-height:1.55; white-space:pre-wrap}
   .opt{
-    text-align:left; font-size:13px; padding:9px 12px; border-radius:10px; border:1px solid var(--line);
-    background:var(--paper); color:var(--ink); cursor:pointer; font-family:inherit; line-height:1.5;
+    text-align:left; font-size:12.5px; padding:9px 12px; border-radius:10px; border:1px solid var(--line);
+    background:var(--paper); color:var(--ink); cursor:pointer; line-height:1.5; white-space:pre-wrap; overflow-wrap:anywhere;
+    font-family:"IBM Plex Mono",monospace;
   }
-  .opt:focus-visible{outline:2px solid var(--code); outline-offset:1px}
   .opt.correct{background:var(--success-soft); border-color:var(--success); font-weight:600}
   .opt.wrong{background:var(--danger-soft); border-color:var(--danger)}
   .opt[disabled]{cursor:default}
-  .explain{font-size:12px; color:var(--ink-soft); background:var(--paper); border-radius:8px; padding:8px 10px; display:none}
+  .explain{font-size:12px; color:var(--ink-soft); background:var(--paper); border-radius:8px; padding:8px 10px; display:none; line-height:1.6}
   .explain.show{display:block}
   .quiz-score{
-    display:flex; align-items:center; justify-content:space-between; font-family:"IBM Plex Mono"; font-size:12px;
-    padding-top:8px; border-top:1px solid var(--line); color:var(--ink-soft);
-  }
-  .quiz-score button{
-    font-family:"IBM Plex Mono"; font-size:11px; border:1px solid var(--line); background:var(--paper);
-    color:var(--ink-soft); border-radius:8px; padding:5px 10px; cursor:pointer;
+    display:flex; align-items:center; justify-content:space-between; font-family:"IBM Plex Mono",monospace; font-size:12px;
+    padding-top:10px; border-top:1px solid var(--line); color:var(--ink-soft);
   }
 
-  svg.diagram{width:100%; height:auto; margin-top:2px}
-  .diagram text{font-family:"IBM Plex Mono"; fill:var(--ink-soft)}
-  .diagram .accent-fill{fill:var(--accent-soft); stroke:var(--accent)}
-  .diagram .code-fill{fill:var(--code-soft); stroke:var(--code)}
-  .diagram .line{stroke:var(--ink-faint)}
-
-  /* shuffle FAB + overlay */
+  /* ---------- FAB ---------- */
   .fab{
-    position:fixed; right:16px; bottom:calc(16px + env(safe-area-inset-bottom,0px));
-    z-index:30; font-family:"IBM Plex Mono"; font-weight:700; font-size:13px;
+    position:fixed; right:16px; bottom:calc(16px + env(safe-area-inset-bottom,0px)); z-index:30;
+    font-family:"IBM Plex Mono",monospace; font-weight:700; font-size:13px;
     background:var(--accent); color:var(--accent-ink); border:none; border-radius:999px;
-    padding:13px 18px; box-shadow:var(--shadow); cursor:pointer; display:flex; align-items:center; gap:6px;
+    padding:13px 18px; box-shadow:var(--shadow); cursor:pointer;
   }
+
+  /* ---------- overlay ---------- */
   .overlay{
-    position:fixed; inset:0; z-index:50; background:var(--paper);
-    display:flex; flex-direction:column; padding:calc(14px + env(safe-area-inset-top,0px)) 16px calc(16px + env(safe-area-inset-bottom,0px));
+    position:fixed; inset:0; z-index:50; background:var(--paper); display:flex; flex-direction:column;
+    padding:calc(12px + env(safe-area-inset-top,0px)) 16px calc(14px + env(safe-area-inset-bottom,0px));
+    max-width:720px; margin-inline:auto;
   }
-  .overlay-head{display:flex; align-items:center; justify-content:space-between; margin-bottom:12px}
-  .overlay-head h2{font-size:15px}
-  .overlay-head button.close{
-    font-family:"IBM Plex Mono"; font-size:12px; background:var(--card); border:1px solid var(--line);
-    color:var(--ink-soft); border-radius:8px; padding:6px 10px; cursor:pointer;
-  }
-  .chips{display:flex; gap:6px; overflow-x:auto; padding-bottom:10px; scrollbar-width:none}
+  .overlay-head{display:flex; align-items:center; justify-content:space-between; margin-bottom:10px; gap:8px}
+  .modes{display:flex; gap:6px}
+  .close{font-family:"IBM Plex Mono",monospace; font-size:12px; background:var(--card); border:1px solid var(--line); color:var(--ink-soft); border-radius:8px; padding:6px 10px; cursor:pointer}
+  .chips{display:flex; gap:6px; overflow-x:auto; padding-bottom:10px; scrollbar-width:none; flex:0 0 auto}
   .chips::-webkit-scrollbar{display:none}
   .chip{
-    flex:0 0 auto; font-family:"IBM Plex Mono"; font-size:11px; padding:5px 10px; border-radius:999px;
+    flex:0 0 auto; font-family:"IBM Plex Mono",monospace; font-size:11px; padding:5px 10px; border-radius:999px;
     border:1px solid var(--line); background:var(--card); color:var(--ink-soft); cursor:pointer; white-space:nowrap;
   }
   .chip[aria-pressed="true"]{background:var(--code); border-color:var(--code); color:#fff}
-  .deck-wrap{flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:16px; min-height:0}
-  .progress{font-family:"IBM Plex Mono"; font-size:12px; color:var(--ink-faint)}
-  .deck-flip{width:100%; max-width:380px; height:min(46vh,300px); perspective:1200px}
+  .deck-wrap{flex:1; min-height:0; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:12px}
+  .progress{font-family:"IBM Plex Mono",monospace; font-size:12px; color:var(--ink-faint); display:flex; gap:10px; align-items:center}
+  .progress .weak-badge{color:var(--danger); font-weight:600}
+  .deck-flip{width:100%; max-width:440px; flex:1; min-height:0; max-height:460px; perspective:1200px}
   .deck-inner{position:relative; width:100%; height:100%; transition:transform .45s cubic-bezier(.4,.2,.2,1); transform-style:preserve-3d; cursor:pointer}
   .deck-flip.flipped .deck-inner{transform:rotateY(180deg)}
   .deck-face{
-    position:absolute; inset:0; backface-visibility:hidden; border-radius:18px; border:1px solid var(--line);
-    background:var(--card); box-shadow:var(--shadow); padding:22px; display:flex; flex-direction:column;
-    justify-content:center; gap:10px; overflow-y:auto;
+    position:absolute; inset:0; backface-visibility:hidden; -webkit-backface-visibility:hidden; border-radius:18px;
+    border:1px solid var(--line); background:var(--card); box-shadow:var(--shadow); padding:20px; display:flex; flex-direction:column;
+    gap:10px; overflow-y:auto;
   }
-  .deck-face .kind{font-family:"IBM Plex Mono"; font-size:10px; letter-spacing:.08em; text-transform:uppercase; color:var(--accent)}
-  .deck-face .body{font-size:16px; font-weight:600; line-height:1.5}
+  .deck-face>:first-child{margin-top:auto}
+  .deck-face>:last-child{margin-bottom:auto}
+  .deck-face .kind{font-family:"IBM Plex Mono",monospace; font-size:10px; letter-spacing:.08em; text-transform:uppercase; color:var(--accent)}
+  .deck-face .body{font-size:16px; font-weight:600; line-height:1.55; white-space:pre-wrap; overflow-wrap:anywhere}
+  .deck-face .body.code{font-family:"IBM Plex Mono",monospace; font-size:12.5px; font-weight:400; line-height:1.65}
   .deck-face.back{transform:rotateY(180deg); background:var(--code-soft); border-color:var(--code)}
-  .deck-face.back .body{font-family:"IBM Plex Mono"; font-size:13.5px; font-weight:400; white-space:pre-wrap}
-  .deck-face .note{font-size:12px; color:var(--ink-soft); font-family:"IBM Plex Sans"; border-top:1px dashed var(--line); padding-top:8px; margin-top:4px}
-  .deck-controls{display:flex; align-items:center; gap:14px}
+  .deck-face.back .body{font-family:"IBM Plex Mono",monospace; font-size:13px; font-weight:400}
+  .deck-face .note{font-size:12px; color:var(--ink-soft); border-top:1px dashed var(--line); padding-top:8px; white-space:pre-wrap; line-height:1.6}
+  .deck-controls{display:flex; align-items:stretch; gap:8px; width:100%; max-width:440px}
   .deck-controls button{
-    font-family:"IBM Plex Mono"; font-size:13px; border:1px solid var(--line); background:var(--card);
-    color:var(--ink); border-radius:12px; padding:11px 16px; cursor:pointer;
+    flex:1; font-family:"IBM Plex Mono",monospace; font-size:12.5px; font-weight:600; border:1px solid var(--line); background:var(--card);
+    color:var(--ink); border-radius:12px; padding:12px 6px; cursor:pointer; white-space:nowrap;
   }
-  .deck-controls button.primary{background:var(--accent); border-color:var(--accent); color:var(--accent-ink); font-weight:700}
-  .deck-controls button:focus-visible{outline:2px solid var(--code); outline-offset:2px}
+  .deck-controls button.weak{color:var(--danger); border-color:var(--danger)}
+  .deck-controls button.know{color:var(--success); border-color:var(--success)}
+  .deck-controls button.nav{flex:0 0 52px}
+  .shuf{font-family:"IBM Plex Mono",monospace; font-size:11px; padding:4px 9px; border-radius:999px; border:1px solid var(--line); background:var(--card); color:var(--ink-soft); cursor:pointer}
 
-  @media (prefers-reduced-motion: reduce){
-    .flip-inner, .deck-inner{transition:none}
-  }
+  .quiz-wrap{flex:1; min-height:0; overflow-y:auto; display:flex; flex-direction:column; gap:12px; padding-bottom:8px}
+  .quiz-wrap .qcard{background:var(--card); border:1px solid var(--line); border-radius:16px; box-shadow:var(--shadow); padding:16px; display:flex; flex-direction:column; gap:10px}
+  .quiz-wrap .qmeta{font-family:"IBM Plex Mono",monospace; font-size:11px; color:var(--ink-faint)}
+  .quiz-wrap .qtext{font-size:15px}
+  .quiz-wrap .opt{font-size:13px}
+  .wrong-item{font-size:12.5px; line-height:1.6; padding:10px 12px; background:var(--danger-soft); border-radius:10px}
+  .wrong-item b{display:block; margin-bottom:2px}
+  .score-big{font-family:"IBM Plex Mono",monospace; font-size:28px; font-weight:700; text-align:center; padding:8px 0}
+
+  @media (prefers-reduced-motion: reduce){ .flip-inner,.deck-inner{transition:none} }
 </style>
+</head>
+<body>
 
 <header class="top">
   <div class="brand">
     <h1>CSIT884 複習卡</h1>
-    <span class="tag mono">HTML · CSS · JS · XML/XSD</span>
+    <span class="tag">HTML · CSS · JS · 表單 · XML</span>
+    <button class="mini" id="recallBtn" type="button" aria-pressed="false" title="遮住速查表的程式碼，先回想再點開看答案">🙈 默背</button>
   </div>
-  <div class="tabs" id="tabs" role="tablist"></div>
+  <div class="tabs" id="groups" role="tablist" aria-label="大單元"></div>
+  <div class="tabs sub" id="tabs" role="tablist" aria-label="小單元"></div>
 </header>
 
 <main id="main"></main>
@@ -241,12 +262,16 @@
 
 <div class="overlay" id="overlay" hidden>
   <div class="overlay-head">
-    <h2 class="mono">隨機複習</h2>
+    <div class="modes">
+      <button class="mini" id="modeCards" type="button" aria-pressed="true">卡片</button>
+      <button class="mini" id="modeQuiz" type="button" aria-pressed="false">選擇題</button>
+    </div>
     <button class="close" id="closeOverlay" type="button">離開 ✕</button>
   </div>
   <div class="chips" id="chips"></div>
-  <div class="deck-wrap">
-    <div class="progress" id="progress">1 / 1</div>
+
+  <div class="deck-wrap" id="cardView">
+    <div class="progress"><span id="progress">1 / 1</span><span class="weak-badge" id="weakBadge" hidden>不熟</span><button class="shuf" id="shuffleBtn" type="button">🔀 洗牌</button></div>
     <div class="deck-flip" id="deckFlip">
       <div class="deck-inner" id="deckInner">
         <div class="deck-face front">
@@ -261,377 +286,23 @@
       </div>
     </div>
     <div class="deck-controls">
-      <button id="prevBtn" type="button">← 上一張</button>
-      <button id="shuffleBtn" class="primary" type="button">🔀 洗牌</button>
-      <button id="nextBtn" type="button">下一張 →</button>
+      <button class="nav" id="prevBtn" type="button" aria-label="上一張">←</button>
+      <button class="weak" id="weakBtn" type="button">✗ 不熟</button>
+      <button class="know" id="knowBtn" type="button">✓ 會了</button>
+      <button class="nav" id="nextBtn" type="button" aria-label="下一張">→</button>
     </div>
   </div>
+
+  <div class="quiz-wrap" id="quizView" hidden></div>
 </div>
 
-<script>
-(function(){
-"use strict";
-
-var TOPICS = [
-  {id:"html", name:"HTML"},
-  {id:"css", name:"CSS"},
-  {id:"jsbasic", name:"JS 基礎"},
-  {id:"jsevent", name:"JS 事件"},
-  {id:"form", name:"表單驗證"},
-  {id:"anim", name:"動畫效果"},
-  {id:"xml", name:"XML/DTD"},
-  {id:"xsd", name:"XSD"}
-];
-
-var DATA = {
-  html:{
-    intro:"HTML 用標籤 (tag) 描述網頁內容,大多數標籤都是成對出現：開始標籤配一個一模一樣名稱的結束標籤。",
-    cards:[
-      {q:"一份 HTML 文件最基本的骨架長什麼樣？", a:"<html>\n <head>\n  <title>Hi</title>\n </head>\n <body>\n  Hello World!\n </body>\n</html>"},
-      {q:"沒有內容的空元素 (empty element) 怎麼寫？", a:"用自我封閉標籤：\n<br />\n<hr />\n<img src=\"cat.png\" alt=\"貓\" />"},
-      {q:"屬性 (attribute) 的寫法規則？", a:"寫在開始標籤裡\nname=\"value\"\n<img src=\"a.png\" alt=\"說明\" />"},
-      {q:"& < > 這些保留字元怎麼顯示在畫面上？", a:"用字元實體：\n&lt;  →  <\n&gt;  →  >\n&amp; →  &\n&nbsp; → 不斷行空格"}
-    ],
-    mistakes:[
-      {wrong:"<P>a paragraph\n<br>\n<img src=\"logo.png\">", right:"<p>a paragraph</p>\n<br />\n<img src=\"logo.png\" />", note:"HTML5 瀏覽器雖然容錯,但考試常考 XHTML 規則：標籤要小寫、一定要正確關閉、屬性值要加引號。"}
-    ],
-    quiz:[
-      {q:"下面哪一個是正確的自我封閉標籤寫法？", opts:["<br/>","<BR>","<br></br>","<br sp>"], correct:0, explain:"自我封閉標籤用 /> 結尾,依 XHTML 規則標籤名稱要小寫。"},
-      {q:"<ol> 和 <ul> 的差別是？", opts:["ol 是有序清單,ul 是無序清單","ol 是無序清單,ul 是有序清單","兩者完全一樣","ol 只能放在表格裡"], correct:0, explain:"ol = ordered list(有編號),ul = unordered list(項目符號)。"},
-      {q:"要讓瀏覽器把 < 印出來而不是當成標籤解析,要用？", opts:["&lt;","&amp;","雙引號括起來","反斜線 \\<"], correct:0, explain:"< 是保留字元,必須用字元實體 &lt; 取代。"}
-    ]
-  },
-  css:{
-    intro:"CSS 決定網頁的外觀。三種套用方式的優先權：inline（行內）最高，其次是 document（內部 &lt;style&gt;），external（外部檔案）最低。",
-    diagram:'<svg class="diagram" viewBox="0 0 300 92"><rect class="accent-fill" x="4" y="8" width="292" height="22" rx="6"/><text x="150" y="23" text-anchor="middle" font-size="11">inline style="..." 優先權最高</text><rect class="code-fill" x="24" y="36" width="252" height="22" rx="6"/><text x="150" y="51" text-anchor="middle" font-size="11">document &lt;style&gt;...&lt;/style&gt;</text><rect x="44" y="64" width="212" height="22" rx="6" fill="none" class="line" stroke-width="1.4"/><text x="150" y="79" text-anchor="middle" font-size="11">external .css 檔案 優先權最低</text></svg>',
-    cards:[
-      {q:"三種加入 CSS 的方式？", a:"1) inline：style=\"...\" 屬性\n2) document：<style> 寫在 <head>\n3) external：<link rel=\"stylesheet\" href=\"x.css\">"},
-      {q:"class selector 跟 id selector 符號差在哪？", a:"class 用 . 開頭\n.userInfo{...}\n\nid 用 # 開頭\n#userHeading{...}\n(id 在同一頁應該唯一)"},
-      {q:"「E 的所有子孫 F」跟「E 的直接子元素 F」怎麼分？", a:"子孫(不管隔幾層)：\nE F { ... }\n\n只限直接子元素：\nE > F { ... }"},
-      {q:"連結的四種偽類 (pseudo-class) 常見寫法？", a:"a:link{...}   未拜訪過\na:visited{...} 拜訪過\nh1:hover{...}  滑鼠移上去"}
-    ],
-    mistakes:[
-      {wrong:"p {\n border:1px solid black,\n padding:10px\n}", right:"p {\n border:1px solid black;\n padding:10px;\n}", note:"CSS 宣告之間要用分號 ; 隔開,不是逗號。少一個分號,後面的屬性常常直接失效。"}
-    ],
-    quiz:[
-      {q:"三種 CSS 優先順序由高到低排列？", opts:["inline > document > external","external > document > inline","document > inline > external","三者一樣高,看誰先寫"], correct:0, explain:"離元素越近優先權越高：inline 最高,external 最低。"},
-      {q:".eticket 這個 selector 選到的是？", opts:["class=\"eticket\" 的所有元素","id=\"eticket\" 的元素","標籤名稱叫 eticket 的元素","這是無效語法"], correct:0, explain:". 開頭代表 class selector。"},
-      {q:"div i { color:red; } 這個 contextual selector 選到什麼？", opts:["div 裡面所有的 i 子孫元素","只有 div 直接底下的 i 子元素","頁面上所有 i 元素","只有 class 叫 div 的 i 元素"], correct:0, explain:"中間用空白代表「子孫」,不限層數;若只要直接子元素要用 >。"}
-    ]
-  },
-  jsbasic:{
-    intro:"JS 用 var 宣告變數,型別是動態的（同一個變數可以先後裝不同型別）,陳述句用分號結尾。",
-    diagram:'<svg class="diagram" viewBox="0 0 300 78"><rect class="accent-fill" x="4" y="6" width="88" height="30" rx="6"/><text x="48" y="25" text-anchor="middle" font-size="10">① 給 id</text><rect class="code-fill" x="106" y="6" width="120" height="30" rx="6"/><text x="166" y="20" text-anchor="middle" font-size="9">② getElementById</text><text x="166" y="31" text-anchor="middle" font-size="9">("id")</text><rect x="240" y="6" width="56" height="30" rx="6" fill="none" class="line" stroke-width="1.4"/><text x="268" y="25" text-anchor="middle" font-size="10">③ 改值</text><path class="line" d="M94 21 H104 M228 21 H238" stroke-width="1.4" marker-end="url(#arr)"/><text x="48" y="58" text-anchor="middle" font-size="9" fill="var(--ink-faint)">html 加 id</text><text x="166" y="58" text-anchor="middle" font-size="9" fill="var(--ink-faint)">var e = ...</text><text x="268" y="58" text-anchor="middle" font-size="9" fill="var(--ink-faint)">e.innerHTML</text></svg>',
-    cards:[
-      {q:"宣告變數但沒給值,它的值是什麼？", a:"undefined\n\nvar x;\nalert(x); // undefined"},
-      {q:"== 是比較還是賦值？", a:"== 是「比較是否相等」\n= 才是「賦值」\n\nif (x == 5) { ... }  ✓\nif (x = 5)  { ... }  ✗ 危險!"},
-      {q:"數字加字串會發生什麼事？", a:"從左到右運算,遇到字串\n整段變成字串串接：\n\n2016 + \"Wollongong\"\n→ \"2016Wollongong\""},
-      {q:"用 JS 改畫面內容的三個步驟？", a:"① 給 HTML 元素一個 id\n② var e=document.getElementById(\"id\")\n③ e.innerHTML=\"新內容\"\n  (輸入框用 e.value,圖片用 e.src)"}
-    ],
-    mistakes:[
-      {wrong:"if (x = 5) {\n  alert(\"x is 5\");\n}", right:"if (x == 5) {\n  alert(\"x is 5\");\n}", note:"= 是賦值,== 才是比較。Python 轉 JS 常在寫 if 判斷式時手滑漏打一個等號,這個錯誤不會報錯,還會讓判斷式永遠成立,很難察覺。"}
-    ],
-    quiz:[
-      {q:"var studentName 和 var StudentName 是同一個變數嗎？", opts:["不是,JS 識別字有大小寫之分","是同一個","只有函式名稱才區分大小寫","只看第一個字母"], correct:0, explain:"JS 所有識別字都區分大小寫。"},
-      {q:"\"Wollongong\" + 2016 + 1 的結果是？", opts:["\"Wollongong20161\"","\"Wollongong2017\"",2017,"語法錯誤"], correct:0, explain:"從左到右運算,字串在最前面,後面全部變成字串串接。"},
-      {q:"要把字串 \"19\" 轉成數字,課程教的是哪個？", opts:["Number(ageString)","ageString.toInt()","parseNumber(ageString)","int(ageString)"], correct:0, explain:"Number(字串) 轉數字;反過來用 .toString() 轉字串。"}
-    ]
-  },
-  jsevent:{
-    intro:"事件讓使用者能跟網頁互動,常見寫法是在 HTML 標籤裡加上 onClick 之類的屬性,指到一個要執行的函式。",
-    cards:[
-      {q:"按鈕被點擊要觸發函式,怎麼寫？", a:"<button onClick=\"sayHi()\">\n Click me\n</button>"},
-      {q:"onChange 什麼情況下不會被觸發？", a:"使用者進入欄位,但\n沒有改變內容就離開\n→ 不會觸發 onChange\n\n(onBlur 只要離開焦點就觸發,\n跟 onChange 不同)"},
-      {q:"confirm() 跟 prompt() 回傳值差在哪？", a:"confirm() → true / false\n (按 OK / Cancel)\n\nprompt() → 輸入的文字\n (按 Cancel 回傳 null)"},
-      {q:"表單送出前想做驗證,怎麼阻止送出？", a:"<form onSubmit=\"return validateForm()\">\n\nfunction validateForm(){\n if (...) return false;\n return true;\n}"}
-    ],
-    mistakes:[
-      {wrong:"<form onSubmit=\"validateForm()\">", right:"<form onSubmit=\"return validateForm()\">", note:"忘記加 return,就算 validateForm() 裡面 return false,表單還是會照常送出,因為 onSubmit 屬性根本沒拿到那個 false。"}
-    ],
-    quiz:[
-      {q:"onMouseOver 跟 onFocus 差在哪？", opts:["onMouseOver 是滑鼠移到元素上;onFocus 是元素被選取聚焦","兩者都是滑鼠事件","兩者都是鍵盤事件","兩者完全一樣"], correct:0, explain:"onFocus 常用在輸入框被點進去、下拉選單被選取的當下。"},
-      {q:"prompt(\"請輸入姓名\") 使用者按下 Cancel,回傳值是？", opts:["null","空字串 \"\"","undefined","false"], correct:0, explain:"prompt 按 Cancel 回傳 null,按 OK 回傳輸入的文字。"},
-      {q:"想在使用者點按鈕時跳出「是否確定？」的對話框,要用？", opts:["confirm()","prompt()","alert()","onChange()"], correct:0, explain:"confirm() 才有 OK / Cancel 兩個選項可以判斷。"}
-    ]
-  },
-  form:{
-    intro:"表單負責收集使用者輸入,name 屬性決定後端收到的「參數名稱」,value 決定要傳過去的「值」。",
-    cards:[
-      {q:"GET 和 POST 最大差別？", a:"GET：資料顯示在網址上、\n 長度限制約 2048 字元、\n 絕不能送密碼\n\nPOST：資料不顯示在網址、\n 無長度限制,適合機密資料"},
-      {q:"checkbox / radio 要預設被選取,屬性怎麼寫？", a:"checked=\"checked\"\n(或簡寫 checked)"},
-      {q:"使用者只輸入空白,算不算「有填寫」？", a:"不算!要先 .trim() 去除\n頭尾空白再檢查：\n\nif (email.trim() == \"\") {...}"},
-      {q:"HTML5 內建驗證常用哪些屬性？", a:"required\nminlength / maxlength\nmin / max\ntype=\"email\"\npattern"}
-    ],
-    mistakes:[
-      {wrong:"function validateForm(){\n var email = ...value;\n if (email == \"\") {\n  return false;\n }\n}", right:"function validateForm(){\n var email = ...value;\n if (email==null || email.trim()==\"\") {\n  return false;\n }\n}", note:"只檢查空字串會漏掉兩種情況：欄位是 null,或使用者打了一堆空白但看起來像有填。"}
-    ],
-    quiz:[
-      {q:"表單送到伺服器,決定參數名稱的是哪個屬性？", opts:["name","value","id","type"], correct:0, explain:"name 對應後端要接收的參數 key,value 才是實際送過去的內容。"},
-      {q:"密碼欄位絕對不能用哪個 method 送出？", opts:["get","post","submit","secure"], correct:0, explain:"get 會把資料整個放在網址上,還會留在瀏覽紀錄裡。"},
-      {q:"trim() 這個字串方法的作用是？", opts:["去掉字串前後的空白","把字串轉大寫","計算字串長度","把字串反過來排列"], correct:0, explain:"trim() 只去頭尾空白,字串中間的空白不會動。"}
-    ]
-  },
-  anim:{
-    intro:"setInterval 讓一個函式每隔固定時間重複執行一次,是動畫、計時器、輪播的核心工具。",
-    cards:[
-      {q:"啟動一個每 1 秒執行一次的動畫怎麼寫？", a:"var schedule =\n setInterval(myFunction, 1000);"},
-      {q:"怎麼停止動畫？", a:"clearInterval(schedule);\n\n(schedule 一定要是同一個變數,\n不能重新宣告一個新的)"},
-      {q:"骰子公式：產生 1~6 之間的隨機整數？", a:"Math.floor(Math.random()*6)+1\n\nMath.random() → 0(含)~1(不含)\n乘 6 再 floor → 0~5 整數\n加 1 → 1~6"},
-      {q:"函式怎麼接收參數,取代重複寫兩個函式？", a:"function showMessage(msg){\n ...innerHTML = msg;\n}\n\n呼叫：\nonClick=\"showMessage('Woof!')\""}
-    ],
-    mistakes:[
-      {wrong:"setInterval(rollDice(), 100);", right:"setInterval(rollDice, 100);", note:"setInterval 要傳「函式本身」,不能加括號呼叫它。加了括號會變成：先立刻執行一次 rollDice(),再把它的回傳值(通常是 undefined)交給 setInterval,動畫完全不會照預期跑。"}
-    ],
-    quiz:[
-      {q:"Math.random() 產生的數字範圍是？", opts:["0(含)~1(不含)的小數","0~1 的整數","1~10 的整數","-1~1 的小數"], correct:0, explain:"要變整數要再配合 Math.floor() 跟乘法。"},
-      {q:"要停止動畫,一定要先記住什麼？", opts:["setInterval 回傳的排程 (schedule) 變數","動畫的名字","函式的參數","什麼都不用記"], correct:0, explain:"clearInterval 需要那個排程變數才知道要停哪一個。"},
-      {q:"setInterval(rollDice, 100) 裡的 100 代表？", opts:["每隔 100 毫秒執行一次","總共執行 100 次","執行 100 毫秒後停止","延遲 100 毫秒才開始且只執行一次"], correct:0, explain:"第二個參數是間隔毫秒數,會一直重複執行直到 clearInterval。"}
-    ]
-  },
-  xml:{
-    intro:"XML 讓你自訂標籤來存資料,規則比 HTML 嚴格很多；DTD 用來定義這份 XML 「合法」的結構長什麼樣。",
-    diagram:'<svg class="diagram" viewBox="0 0 300 96"><rect class="accent-fill" x="118" y="6" width="64" height="24" rx="6"/><text x="150" y="22" text-anchor="middle" font-size="10">root</text><path class="line" d="M150 30 V44" stroke-width="1.4"/><path class="line" d="M150 44 H70 M150 44 H230" stroke-width="1.4"/><path class="line" d="M70 44 V56 M230 44 V56" stroke-width="1.4"/><rect class="code-fill" x="34" y="56" width="72" height="24" rx="6"/><text x="70" y="72" text-anchor="middle" font-size="10">child A</text><rect class="code-fill" x="194" y="56" width="72" height="24" rx="6"/><text x="230" y="72" text-anchor="middle" font-size="10">child B</text><text x="150" y="92" text-anchor="middle" font-size="9" fill="var(--ink-faint)">開始標籤/結束標籤 名稱要完全一致</text></svg>',
-    cards:[
-      {q:"一份 XML 文件最多能有幾個 root element？", a:"剛好一個。\n所有其他元素都必須\n包在這個根元素裡面。"},
-      {q:"XML 標籤沒有內容時要怎麼寫？", a:"自我封閉：\n<emptyElement />\n\n(不能只寫開始標籤不關閉,\n這點跟部分 HTML 標籤不同)"},
-      {q:"DTD 的 <!ELEMENT name (a,b)> 是什麼意思？", a:"宣告 name 這個元素裡面\n依照順序包含子元素 a、b"},
-      {q:"<!ELEMENT list (item*)> 裡的 * 是什麼意思？", a:"item 可以出現 0 次或多次\n\n+  → 1 次以上\n?  → 0 或 1 次\n(無符號) → 剛好 1 次"}
-    ],
-    mistakes:[
-      {wrong:"<subject>\n <title>Java Programming</title>\n ...\n</sbject>", right:"<subject>\n <title>Java Programming</title>\n ...\n</subject>", note:"這是你在 Week7 練習裡實際出現過的狀況：開始標籤是 subject,結束標籤打成 sbject,兩個名稱對不起來。XML 規定開始/結束標籤名稱要完全一致,這種頭尾沒對好的錯誤是考試最容易被扣分的地方之一。"},
-      {wrong:"<!DOCTYPE student [\n <!ELEMENT student\n  (firstName,lastName,email,mobile)>\n]>\n<!-- 但 XML 裡還用到\n     id / subject / title / cp / code -->", right:"DTD 裡的 <!ELEMENT ...> 要把 XML 實際用到的「每一個」標籤都宣告過,\n包含巢狀的子元素,例如 subject\n底下的 title、cp、code 也都要\n各自有一行 <!ELEMENT>。", note:"少宣告一個元素,這份 XML 對這份 DTD 來說就是不合法。你在 Week7 練習裡 DTD 只宣告了 student 的四個子元素,但 XML 本身還多了 id、subject 及其子元素,這些都漏掉了。"}
-    ],
-    quiz:[
-      {q:"下面哪一份 XML 是 well-formed 的？", opts:["<a><b>1</b></a>","<a><b>1</b>","<a><b>1</b></c>","<a>1</a><a>2</a>（兩個平行 root）"], correct:0, explain:"必須只有一個 root,且每個標籤都要正確關閉、頭尾名稱一致。"},
-      {q:"<!ELEMENT student (name+)> 代表 name 可以出現幾次？", opts:["1 次以上","0 次以上","只能 0 或 1 次","剛好 1 次"], correct:0, explain:"+ 代表至少 1 次,可以更多次。"},
-      {q:"XML 的屬性值可以不加引號嗎？", opts:["不行,一定要用單引號或雙引號括起來","可以,跟部分 HTML 用法一樣可以省略","只有數字可以不加","只有 id 屬性可以不加"], correct:0, explain:"XML 比 HTML 嚴格,屬性值永遠要加引號。"}
-    ]
-  },
-  xsd:{
-    intro:"XSD 是另一種定義 XML 結構的方式,判斷 simpleType 或 complexType 的核心問題只有一個：這個元素「有沒有」子元素或屬性？",
-    cards:[
-      {q:"什麼時候用 simpleType？什麼時候用 complexType？", a:"沒有子元素、也沒有屬性\n→ simpleType\n\n有子元素 或 有屬性\n(符合其中一項就算)\n→ complexType"},
-      {q:"「有文字內容又有屬性」的元素怎麼宣告？\n例：<price code=\"A\">39.5</price>", a:"用 complexType 包 simpleContent\n再用 extension 加屬性：\n\n<xsd:complexType>\n <xsd:simpleContent>\n  <xsd:extension base=\"xsd:decimal\">\n   <xsd:attribute name=\"code\".../>\n  </xsd:extension>\n </xsd:simpleContent>\n</xsd:complexType>"},
-      {q:"子元素要「0次到不限次數」怎麼寫？", a:"minOccurs=\"0\"\nmaxOccurs=\"unbounded\""},
-      {q:"限制 grade 只能是 A/B/C/D 其中一個？", a:"<xsd:restriction base=\"xsd:string\">\n <xsd:enumeration value=\"A\"/>\n <xsd:enumeration value=\"B\"/>\n ...\n</xsd:restriction>"}
-    ],
-    mistakes:[
-      {wrong:"<xsd:complexType>\n <xsd:attribute .../>\n <xsd:sequence>...</xsd:sequence>\n</xsd:complexType>", right:"<xsd:complexType>\n <xsd:sequence>...</xsd:sequence>\n <xsd:attribute .../>\n</xsd:complexType>", note:"attribute 的宣告一定要放在 sequence 之後,順序寫反了就是不合法的 XSD。"}
-    ],
-    quiz:[
-      {q:"一個元素只有屬性、沒有子元素、沒有文字內容,要用？", opts:["complexType","simpleType","兩者都可以","不用宣告"], correct:0, explain:"只要有屬性,就一定要用 complexType。"},
-      {q:"minOccurs=\"0\" 代表什麼？", opts:["這個元素可以完全不出現","至少要出現 0 次以上、不能省略","這個元素一定要出現","語法錯誤"], correct:0, explain:"0 代表可有可無,預設值其實是 1(必須出現一次)。"},
-      {q:"xsd:sequence 的作用是？", opts:["規定子元素要按照指定的順序出現","規定子元素可以任意順序出現","規定屬性的預設值","跟 HTML 的 <ol> 功能一樣"], correct:0, explain:"sequence 底下列出的子元素,在 XML 裡也要照同樣順序出現。"}
-    ]
-  }
-};
-
-/* ---------- render topic tabs ---------- */
-var tabsEl = document.getElementById("tabs");
-TOPICS.forEach(function(t, i){
-  var b = document.createElement("button");
-  b.className = "tab mono"; b.type = "button"; b.role = "tab";
-  b.setAttribute("aria-selected", i === 0 ? "true" : "false");
-  b.textContent = t.name;
-  b.addEventListener("click", function(){ selectTopic(t.id); });
-  b.id = "tab-" + t.id;
-  tabsEl.appendChild(b);
-});
-
-function el(tag, cls, html){
-  var e = document.createElement(tag);
-  if (cls) e.className = cls;
-  if (html !== undefined) e.innerHTML = html;
-  return e;
-}
-
-function selectTopic(id){
-  TOPICS.forEach(function(t){
-    document.getElementById("tab-" + t.id).setAttribute("aria-selected", t.id === id ? "true" : "false");
-  });
-  renderMain(id);
-  window.scrollTo({top:0, behavior:"smooth"});
-}
-
-function renderMain(id){
-  var d = DATA[id];
-  var main = document.getElementById("main");
-  main.innerHTML = "";
-
-  var intro = el("div", "intro");
-  intro.innerHTML = "<b>重點：</b>" + d.intro + (d.diagram || "");
-  main.appendChild(intro);
-
-  var cardSec = el("section", "block");
-  cardSec.appendChild(el("div", "block-label", "語法卡（點一下翻面）<span class=\"count\">" + d.cards.length + "</span>"));
-  var row = el("div", "card-row");
-  d.cards.forEach(function(c){
-    var fc = el("div", "flip");
-    fc.innerHTML =
-      '<div class="flip-inner">' +
-        '<div class="face front"><div class="q">' + escapeHtml(c.q) + '</div><div class="hint">點一下看語法 →</div></div>' +
-        '<div class="face back"><div class="a">' + escapeHtml(c.a) + '</div></div>' +
-      '</div>';
-    fc.addEventListener("click", function(){ fc.classList.toggle("flipped"); });
-    row.appendChild(fc);
-  });
-  cardSec.appendChild(row);
-  main.appendChild(cardSec);
-
-  if (d.mistakes && d.mistakes.length){
-    var mSec = el("section", "block");
-    mSec.appendChild(el("div", "block-label", "常見錯誤 · Wrong → Right<span class=\"count\">" + d.mistakes.length + "</span>"));
-    d.mistakes.forEach(function(m){
-      var card = el("div", "mistake");
-      card.innerHTML =
-        '<div class="row wrong"><span class="mark">✕</span><pre>' + escapeHtml(m.wrong) + '</pre></div>' +
-        '<div class="row right"><span class="mark">✓</span><pre>' + escapeHtml(m.right) + '</pre></div>' +
-        '<div class="note">' + m.note + '</div>';
-      mSec.appendChild(card);
-    });
-    main.appendChild(mSec);
-  }
-
-  var qSec = el("section", "block");
-  qSec.appendChild(el("div", "block-label", "小考 · 三題<span class=\"count\">" + d.quiz.length + "</span>"));
-  var quizBox = el("div", "quiz");
-  var answered = 0, correctCount = 0;
-  var scoreRow = el("div", "quiz-score");
-  function updateScore(){
-    scoreRow.querySelector(".s").textContent = answered + " / " + d.quiz.length + " 已作答　正確 " + correctCount;
-  }
-  d.quiz.forEach(function(q, qi){
-    var qBlock = el("div", "quiz-q");
-    qBlock.appendChild(el("div", "qtext", (qi+1) + ". " + escapeHtml(q.q)));
-    var done = false;
-    q.opts.forEach(function(opt, oi){
-      var btn = el("button", "opt mono", null);
-      btn.type = "button"; btn.textContent = opt;
-      btn.addEventListener("click", function(){
-        if (done) return;
-        done = true; answered++;
-        var buttons = qBlock.querySelectorAll(".opt");
-        buttons.forEach(function(bb, bi){
-          bb.disabled = true;
-          if (bi === q.correct) bb.classList.add("correct");
-        });
-        if (oi === q.correct){ correctCount++; }
-        else { btn.classList.add("wrong"); }
-        qBlock.querySelector(".explain").classList.add("show");
-        updateScore();
-      });
-      qBlock.appendChild(btn);
-    });
-    var ex = el("div", "explain", "💡 " + q.explain);
-    qBlock.appendChild(ex);
-    quizBox.appendChild(qBlock);
-  });
-  scoreRow.innerHTML = '<span class="s">0 / ' + d.quiz.length + ' 已作答</span>';
-  var resetBtn = el("button", null, "重來");
-  resetBtn.type = "button";
-  resetBtn.addEventListener("click", function(){ renderMain(id); });
-  scoreRow.appendChild(resetBtn);
-  quizBox.appendChild(scoreRow);
-  qSec.appendChild(quizBox);
-  main.appendChild(qSec);
-}
-
-function escapeHtml(s){
-  return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
-}
-
-selectTopic(TOPICS[0].id);
-
-/* ---------- shuffle review overlay ---------- */
-var deck = [];
-TOPICS.forEach(function(t){
-  var d = DATA[t.id];
-  d.cards.forEach(function(c){
-    deck.push({topic:t.id, topicName:t.name, kind:"語法卡", front:c.q, back:c.a, note:""});
-  });
-  (d.mistakes||[]).forEach(function(m){
-    deck.push({topic:t.id, topicName:t.name, kind:"抓錯", front:"這段哪裡錯？\n\n" + m.wrong, back:m.right, note:m.note});
-  });
-});
-
-var activeFilter = "all";
-var order = [];
-var pos = 0;
-
-function shuffle(arr){
-  var a = arr.slice();
-  for (var i=a.length-1;i>0;i--){
-    var j = Math.floor(Math.random()*(i+1));
-    var tmp=a[i]; a[i]=a[j]; a[j]=tmp;
-  }
-  return a;
-}
-
-function buildOrder(){
-  var pool = deck.map(function(_,i){return i;}).filter(function(i){
-    return activeFilter === "all" || deck[i].topic === activeFilter;
-  });
-  order = shuffle(pool);
-  pos = 0;
-}
-
-var overlay = document.getElementById("overlay");
-var deckFlip = document.getElementById("deckFlip");
-var deckInner = document.getElementById("deckInner");
-
-function renderDeckCard(){
-  if (!order.length){ order=[0]; }
-  var card = deck[order[pos]];
-  deckFlip.classList.remove("flipped");
-  document.getElementById("deckKindFront").textContent = card.topicName + " · " + card.kind;
-  document.getElementById("deckFrontBody").textContent = card.front;
-  document.getElementById("deckKindBack").textContent = card.kind === "抓錯" ? "正確寫法" : "語法";
-  document.getElementById("deckBackBody").textContent = card.back;
-  var noteEl = document.getElementById("deckNote");
-  if (card.note){ noteEl.hidden = false; noteEl.textContent = card.note; }
-  else { noteEl.hidden = true; }
-  document.getElementById("progress").textContent = (pos+1) + " / " + order.length;
-}
-
-deckFlip.addEventListener("click", function(){ deckFlip.classList.toggle("flipped"); });
-document.getElementById("prevBtn").addEventListener("click", function(){
-  pos = (pos - 1 + order.length) % order.length; renderDeckCard();
-});
-document.getElementById("nextBtn").addEventListener("click", function(){
-  pos = (pos + 1) % order.length; renderDeckCard();
-});
-document.getElementById("shuffleBtn").addEventListener("click", function(){
-  buildOrder(); renderDeckCard();
-});
-
-var chipsEl = document.getElementById("chips");
-var allChip = el("button", "chip mono", "全部");
-allChip.type = "button"; allChip.setAttribute("aria-pressed","true");
-allChip.addEventListener("click", function(){ setFilter("all", allChip); });
-chipsEl.appendChild(allChip);
-TOPICS.forEach(function(t){
-  var c = el("button", "chip mono", t.name);
-  c.type = "button"; c.setAttribute("aria-pressed","false");
-  c.addEventListener("click", function(){ setFilter(t.id, c); });
-  chipsEl.appendChild(c);
-});
-function setFilter(id, chipEl){
-  activeFilter = id;
-  Array.prototype.forEach.call(chipsEl.querySelectorAll(".chip"), function(c){ c.setAttribute("aria-pressed","false"); });
-  chipEl.setAttribute("aria-pressed","true");
-  buildOrder(); renderDeckCard();
-}
-
-document.getElementById("fabShuffle").addEventListener("click", function(){
-  overlay.hidden = false;
-  buildOrder();
-  renderDeckCard();
-});
-document.getElementById("closeOverlay").addEventListener("click", function(){
-  overlay.hidden = true;
-});
-
-})();
-</script>
-
-</body></html>
+<script src="data/html.js?v=3"></script>
+<script src="data/css.js?v=3"></script>
+<script src="data/js1.js?v=3"></script>
+<script src="data/js2.js?v=3"></script>
+<script src="data/form.js?v=3"></script>
+<script src="data/xml.js?v=3"></script>
+<script src="data/compare.js?v=3"></script>
+<script src="app.js?v=3"></script>
+</body>
+</html>
