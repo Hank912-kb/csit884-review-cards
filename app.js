@@ -54,11 +54,13 @@ function topicById(id){
   for (var i = 0; i < TOPICS.length; i++) if (TOPICS[i].id === id) return TOPICS[i];
   return null;
 }
+function codePre(code, opt){
+  var pre = el("pre");
+  pre.appendChild(HL.highlight(code, opt));
+  return pre;
+}
 function fillCloze(item){
   return item.code.replace(/\{\{(\d+)\}\}/g, function(m, n){ return item.ans[+n - 1][0]; });
-}
-function blankCloze(code){
-  return code.replace(/\{\{\d+\}\}/g, "＿＿＿");
 }
 
 /* ---------- navigation ---------- */
@@ -117,7 +119,7 @@ function cheatSec(list){
   list.forEach(function(c){
     var box = el("div", "cheat");
     box.appendChild(el("div", "ct", c.t));
-    var pre = el("pre", null, c.code);
+    var pre = codePre(c.code);
     pre.addEventListener("click", function(){
       if (document.body.classList.contains("recall")) pre.classList.toggle("shown");
     });
@@ -138,7 +140,9 @@ function cardsSec(list){
     front.appendChild(el("div", "q", c.q));
     front.appendChild(el("div", "hint", "點一下看答案 →"));
     var back = el("div", "face back");
-    back.appendChild(el("div", "a", c.a));
+    var a = el("div", "a");
+    a.appendChild(HL.highlight(c.a, {note:false}));
+    back.appendChild(a);
     inner.appendChild(front); inner.appendChild(back);
     fc.appendChild(inner);
     fc.addEventListener("click", function(){ fc.classList.toggle("flipped"); });
@@ -159,10 +163,8 @@ function clozeBox(item){
   box.appendChild(el("div", "ct", item.title));
   var pre = el("pre");
   var inputs = [];
-  var parts = item.code.split(/\{\{(\d+)\}\}/);
-  parts.forEach(function(p, i){
-    if (i % 2 === 0) { pre.appendChild(document.createTextNode(p)); return; }
-    var n = parseInt(p, 10) - 1;
+  pre.appendChild(HL.highlight(item.code, {blank: function(num){
+    var n = num - 1;
     var inp = document.createElement("input");
     inp.type = "text"; inp.className = "blank";
     inp.setAttribute("autocapitalize", "off");
@@ -173,8 +175,8 @@ function clozeBox(item){
     item.ans[n].forEach(function(a){ if (a.length > longest) longest = a.length; });
     inp.style.width = (Math.max(3, longest) + 2) + "ch";
     inputs[n] = inp;
-    pre.appendChild(inp);
-  });
+    return inp;
+  }}));
   box.appendChild(pre);
   if (item.note) box.appendChild(el("div", "cn", item.note));
 
@@ -223,8 +225,8 @@ function mistakesSec(list){
   var s = section("常見錯誤 · 抓錯 Wrong → Right", list.length, "mistakes");
   list.forEach(function(m){
     var card = el("div", "mistake");
-    var w = el("div", "row wrong"); w.appendChild(el("span", "mark", "✕")); w.appendChild(el("pre", null, m.wrong));
-    var r = el("div", "row right"); r.appendChild(el("span", "mark", "✓")); r.appendChild(el("pre", null, m.right));
+    var w = el("div", "row wrong"); w.appendChild(el("span", "mark", "✕")); w.appendChild(codePre(m.wrong));
+    var r = el("div", "row right"); r.appendChild(el("span", "mark", "✓")); r.appendChild(codePre(m.right));
     card.appendChild(w); card.appendChild(r);
     if (m.note) card.appendChild(el("div", "cn", m.note));
     s.appendChild(card);
@@ -248,7 +250,7 @@ function traceSec(list){
   var s = section("邏輯題 · 預測結果 (先想再看答案)", list.length, "trace");
   list.forEach(function(t){
     var box = el("div", "trace");
-    box.appendChild(el("pre", null, t.code));
+    box.appendChild(codePre(t.code));
     box.appendChild(el("div", "tq", "❓ " + t.q));
     var ans = el("div", "ans");
     ans.hidden = true;
@@ -271,7 +273,7 @@ function buildSec(list){
     var ol = el("ol");
     b.steps.forEach(function(st){ ol.appendChild(el("li", null, st.replace(/^\d+\.\s*/, ""))); });
     ans.appendChild(ol);
-    ans.appendChild(el("pre", null, b.code));
+    ans.appendChild(codePre(b.code));
     box.appendChild(revealBar("先自己想，再看步驟與程式", ans));
     box.appendChild(ans);
     s.appendChild(box);
@@ -362,8 +364,22 @@ function renderMain(id){
     nodes.push(p[2](p[1]));
   });
   intro.appendChild(jump);
+  var legend = el("div", "legend");
+  [["tag","<標籤>"],["attr","屬性"],["str","\"字串\""],["kw","關鍵字"],["fn","函式()／CSS屬性"],["num","數字"],["com","註解"]].forEach(function(x){
+    legend.appendChild(el("span", "hl-" + x[0], x[1]));
+  });
+  main.appendChild(legend);
   nodes.forEach(function(n){ main.appendChild(n); });
 }
+
+/* ---------- syntax colours on/off ---------- */
+var hlBtn = $("hlBtn");
+function setHl(on){
+  document.body.classList.toggle("nohl", !on);
+  hlBtn.setAttribute("aria-pressed", on ? "true" : "false");
+  store.set("csit884-hl", on);
+}
+hlBtn.addEventListener("click", function(){ setHl(document.body.classList.contains("nohl")); });
 
 /* ---------- recall mode ---------- */
 var recallBtn = $("recallBtn");
@@ -388,26 +404,40 @@ var order = [];
 var pos = 0;
 var mode = "cards";
 
+function S(text){ return {s:text}; }
+function H(code, opt){ return {s:code, h:true, o:opt || {}}; }
+function phBlank(){ return el("span", "ph", "＿＿＿"); }
+
 function buildDeck(){
   deck = [];
+  function add(t, key, i, kind, front, back, note, codeFront){
+    deck.push({id:t.id + ":" + key + i, topic:t.id, topicName:t.name, kind:kind, front:front, back:back, note:note || "", codeFront:!!codeFront});
+  }
   TOPICS.forEach(function(t){
     var d = DATA[t.id];
     if (!d) return;
     (d.cards || []).forEach(function(c, i){
-      deck.push({id:t.id + ":c" + i, topic:t.id, topicName:t.name, kind:"語法卡", front:c.q, back:c.a, note:"", codeFront:false});
+      add(t, "c", i, "語法卡", [S(c.q)], [H(c.a, {note:false})], "", false);
     });
     (d.cloze || []).forEach(function(c, i){
-      deck.push({id:t.id + ":z" + i, topic:t.id, topicName:t.name, kind:"默寫", front:c.title + "\n\n" + blankCloze(c.code), back:fillCloze(c), note:c.note || "", codeFront:true});
+      add(t, "z", i, "默寫", [S(c.title + "\n\n"), H(c.code, {blank: phBlank})], [H(fillCloze(c))], c.note, true);
     });
     (d.mistakes || []).forEach(function(m, i){
-      deck.push({id:t.id + ":m" + i, topic:t.id, topicName:t.name, kind:"抓錯", front:"這段哪裡錯？\n\n" + m.wrong, back:m.right, note:m.note, codeFront:true});
+      add(t, "m", i, "抓錯", [S("這段哪裡錯？\n\n"), H(m.wrong)], [H(m.right)], m.note, true);
     });
     (d.trace || []).forEach(function(x, i){
-      deck.push({id:t.id + ":t" + i, topic:t.id, topicName:t.name, kind:"預測結果", front:x.code + "\n\n❓ " + x.q, back:x.a, note:x.why || "", codeFront:true});
+      add(t, "t", i, "預測結果", [H(x.code), S("\n\n❓ " + x.q)], [S(x.a)], x.why, true);
     });
     (d.build || []).forEach(function(b, i){
-      deck.push({id:t.id + ":b" + i, topic:t.id, topicName:t.name, kind:"怎麼想", front:b.task, back:b.steps.join("\n") + "\n\n" + b.code, note:"", codeFront:false});
+      add(t, "b", i, "怎麼想", [S(b.task)], [S(b.steps.join("\n") + "\n\n"), H(b.code)], "", false);
     });
+  });
+}
+
+function renderSegs(node, segs){
+  node.textContent = "";
+  segs.forEach(function(sg){
+    node.appendChild(sg.h ? HL.highlight(sg.s, sg.o) : document.createTextNode(sg.s));
   });
 }
 
@@ -441,10 +471,10 @@ function renderDeckCard(){
   var card = deck[order[pos]];
   deckFlip.classList.remove("flipped");
   $("deckKindFront").textContent = card.topicName + " · " + card.kind;
-  frontBody.textContent = card.front;
+  renderSegs(frontBody, card.front);
   frontBody.className = "body" + (card.codeFront ? " code" : "");
   $("deckKindBack").textContent = card.kind === "抓錯" ? "正確寫法" : (card.kind === "默寫" ? "完整答案" : "答案");
-  $("deckBackBody").textContent = card.back;
+  renderSegs($("deckBackBody"), card.back);
   var noteEl = $("deckNote");
   if (card.note){ noteEl.hidden = false; noteEl.textContent = card.note; } else { noteEl.hidden = true; }
   $("progress").textContent = (pos + 1) + " / " + order.length;
@@ -614,6 +644,7 @@ document.addEventListener("keydown", function(e){
 
 /* ---------- start ---------- */
 if (store.get("csit884-recall", false)) setRecall(true);
+if (store.get("csit884-hl", true) === false) setHl(false);
 var startId = (location.hash || "").replace("#", "");
 selectTopic(topicById(startId) ? startId : "html");
 

@@ -18,6 +18,8 @@
     --code:#0E7C74; --code-soft:#DCF0EC; --danger:#B8483C; --danger-soft:#F6DEDA;
     --success:#3D7A47; --success-soft:#DCEEDD;
     --shadow:0 1px 2px rgba(20,30,20,.06), 0 6px 16px rgba(20,30,20,.06);
+    --hl-tag:#2563EB; --hl-attr:#B45309; --hl-str:#15803D; --hl-kw:#9333EA; --hl-fn:#0E7490;
+    --hl-num:#C2410C; --hl-com:#6B7280; --hl-ent:#BE185D; --hl-op:#7A847B;
   }
   @media (prefers-color-scheme: dark){
     :root{
@@ -26,6 +28,8 @@
       --code:#54D2C4; --code-soft:#123330; --danger:#E2837A; --danger-soft:#3B211E;
       --success:#7FC98C; --success-soft:#1E3220;
       --shadow:0 1px 2px rgba(0,0,0,.3), 0 8px 20px rgba(0,0,0,.35);
+      --hl-tag:#7DB2FF; --hl-attr:#F0B35A; --hl-str:#7FD08F; --hl-kw:#C79BFF; --hl-fn:#5CD0E6;
+      --hl-num:#FF9E7A; --hl-com:#8A95A0; --hl-ent:#FF8FB8; --hl-op:#8A958A;
     }
   }
   *{box-sizing:border-box}
@@ -241,6 +245,24 @@
   .wrong-item b{display:block; margin-bottom:2px}
   .score-big{font-family:"IBM Plex Mono",monospace; font-size:28px; font-weight:700; text-align:center; padding:8px 0}
 
+
+  /* ---------- syntax highlighting ---------- */
+  .hl-tag{color:var(--hl-tag)}
+  .hl-attr{color:var(--hl-attr)}
+  .hl-str{color:var(--hl-str)}
+  .hl-kw,.hl-decl{color:var(--hl-kw)}
+  .hl-fn,.hl-bi,.hl-prop{color:var(--hl-fn)}
+  .hl-num{color:var(--hl-num)}
+  .hl-ent{color:var(--hl-ent)}
+  .hl-com{color:var(--hl-com); font-style:italic}
+  .hl-op{color:var(--hl-op)}
+  .hl-note{color:var(--ink-soft); font-family:"IBM Plex Sans","PingFang TC","Noto Sans TC","Microsoft JhengHei",sans-serif; font-size:.94em}
+  .hl-kw,.hl-fn{font-weight:500}
+  .ph{color:var(--ink-faint); letter-spacing:.05em}
+  .nohl [class^="hl-"]{color:inherit!important; font-style:normal!important; font-weight:inherit!important; font-family:inherit!important; font-size:inherit!important}
+  .legend{display:flex; flex-wrap:wrap; gap:4px 12px; font-family:"IBM Plex Mono",monospace; font-size:11px; padding:8px 12px; background:var(--card); border:1px solid var(--line); border-radius:10px}
+  body.nohl .legend{display:none}
+
   @media (prefers-reduced-motion: reduce){ .flip-inner,.deck-inner{transition:none} }
 </style>
 </head>
@@ -250,6 +272,7 @@
   <div class="brand">
     <h1>CSIT884 複習卡</h1>
     <span class="tag">HTML · CSS · JS · 表單 · XML</span>
+    <button class="mini" id="hlBtn" type="button" aria-pressed="true" aria-label="切換語法上色" title="語法上色 開/關">🎨</button>
     <button class="mini" id="recallBtn" type="button" aria-pressed="false" title="遮住速查表的程式碼，先回想再點開看答案">🙈 默背</button>
   </div>
   <div class="tabs" id="groups" role="tablist" aria-label="大單元"></div>
@@ -296,13 +319,14 @@
   <div class="quiz-wrap" id="quizView" hidden></div>
 </div>
 
-<script src="data/html.js?v=3"></script>
-<script src="data/css.js?v=3"></script>
-<script src="data/js1.js?v=3"></script>
-<script src="data/js2.js?v=3"></script>
-<script src="data/form.js?v=3"></script>
-<script src="data/xml.js?v=3"></script>
-<script src="data/compare.js?v=3"></script>
-<script src="app.js?v=3"></script>
+<script src="hl.js?v=4"></script>
+<script src="data/html.js?v=4"></script>
+<script src="data/css.js?v=4"></script>
+<script src="data/js1.js?v=4"></script>
+<script src="data/js2.js?v=4"></script>
+<script src="data/form.js?v=4"></script>
+<script src="data/xml.js?v=4"></script>
+<script src="data/compare.js?v=4"></script>
+<script src="app.js?v=4"></script>
 </body>
 </html>
